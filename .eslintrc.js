@@ -5,10 +5,14 @@ module.exports = {
     'vue/setup-compiler-macros': true,
   },
   extends: ['plugin:vue/vue3-recommended', 'airbnb-base', 'prettier'],
+  parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
@@ -37,6 +41,10 @@ module.exports = {
       // 这个是解决引入时没后缀查不到的问题
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+      },
+      alias: {
+        map: [['@', './src/']],
+        extensions: ['.tsx', '.ts', '.jsx', '.js'],
       },
     },
   },

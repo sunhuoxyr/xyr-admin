@@ -9,6 +9,11 @@ Object.keys(modules).forEach((key) => {
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/login.vue'),
+  },
+  {
     path: '/',
     name: 'home',
     component: () => import('@/views/login/login.vue'),

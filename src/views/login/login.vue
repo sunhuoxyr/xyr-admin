@@ -1,52 +1,31 @@
-<script setup lang="ts">
-import { ref } from 'vue';
+<template>
+  <div class="flex h-screen md:bg-none lg:bg-login">
+    <div class="flex flex-1 items-center justify-center">
+      <img :src="illustration" />
+    </div>
+    <div class="flex-1">
+      <!-- <icon-local-logo style="font-size: 60px" />
+      <Icon size="60" color="red">
+        <icon-mdi-account />
+      </Icon>
+      <Icon size="60" type="logo"> </Icon> -->
+      <test></test>
+      <Icon />
+    </div>
+  </div>
+</template>
+<script lang="ts" setup>
+import { generatePath } from '@/utils/source';
+import test from '@/components/Icon/login';
+import Icon from '@/components/Icon/icon.vue';
 
-defineProps<{ msg: string }>();
+const getIllustration = () => {
+  const week = new Date().getDay();
+  const path = `src/assets/login/week/illustration${week}.svg`;
+  return generatePath(path);
+};
 
-const count = ref(0);
+const illustration = getIllustration();
 </script>
 
-<template>
-  <h1>{{ msg }}</h1>
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
-</template>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-</style>
+<style scoped></style>
