@@ -35,6 +35,7 @@ module.exports = {
         devDependencies: true,
       },
     ],
+    'no-plusplus': 0,
   },
   settings: {
     'import/resolver': {
