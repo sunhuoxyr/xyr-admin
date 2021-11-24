@@ -44,8 +44,8 @@ export default [
     url: '/login',
     timeout: 2000,
     method: 'post',
-    response: ({ body }) => {
-      const { account, password } = body;
+    response: (data: any) => {
+      const { account, password } = data.body;
       const checkUser = createFakeUserList().find(
         (item) => item.username === account && password === item.password
       );

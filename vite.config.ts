@@ -38,13 +38,15 @@ export default defineConfig(({ command }) => ({
       },
     }),
     viteMockServe({
+      // mock/_mockProdService.ts 中的 import.meta.globEager 会一直报错
+      ignore: /^_/,
       mockPath: 'mock',
       // 默认设置
       // localEnabled: command === 'serve',
       // prodEnabled: command !== 'serve',
       // logger: true,
       injectCode: `
-        import createProdMockServer from './mock/mockProdService.ts';
+        import createProdMockServer from './mock/_mockProdService.ts';
         setupProdMockServer()
       `,
     }),
