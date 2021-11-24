@@ -39,9 +39,14 @@ export default defineConfig(({ command }) => ({
     }),
     viteMockServe({
       mockPath: 'mock',
-      localEnabled: command === 'serve',
-      prodEnabled: command !== 'serve',
-      logger: true,
+      // 默认设置
+      // localEnabled: command === 'serve',
+      // prodEnabled: command !== 'serve',
+      // logger: true,
+      injectCode: `
+        import createProdMockServer from './mock/mockProdService.ts';
+        setupProdMockServer()
+      `,
     }),
   ],
   css: {

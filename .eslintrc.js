@@ -36,6 +36,11 @@ module.exports = {
       },
     ],
     'no-plusplus': 0,
+    // vue3 不再限制单个根元素
+    'vue/no-multiple-template-root': 0,
+    'no-console': 0,
+    'no-shadow': 0,
+    'no-unused-vars': 0,
   },
   settings: {
     'import/resolver': {

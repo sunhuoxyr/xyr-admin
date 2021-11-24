@@ -32,7 +32,9 @@
           </div>
         </div>
         <div class="mt-8">
-          <el-button type="primary" class="w-full" round>登录</el-button>
+          <el-button type="primary" class="w-full" round @click="login"
+            >登录</el-button
+          >
         </div>
       </div>
     </div>
@@ -41,7 +43,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { generatePath } from '@/utils/source';
-import Icon from '@/components/Icon/icon.vue';
+import loginApi from '@/api/login';
 
 interface FormUser {
   account: string;
@@ -57,8 +59,8 @@ const getIllustration = () => {
 const illustration = getIllustration();
 
 const form: FormUser = reactive({
-  account: '',
-  password: '',
+  account: 'vben',
+  password: '123456',
 });
 const isSelected = reactive({
   account: false,
@@ -70,6 +72,14 @@ const onFocus = <key extends keyof FormUser>(type: key) => {
 
 const onBlur = <key extends keyof FormUser>(type: key) => {
   isSelected[type] = form[type].length > 0;
+};
+
+const login = async () => {
+  try {
+    const result = await loginApi(form);
+  } catch (err) {
+    console.log(err);
+  }
 };
 </script>
 
